@@ -11,6 +11,9 @@ def get_db():
  g.db.row_factory = sqlite3.Row
  return g.db
 @app.teardown_appcontext
+
+#Функція відповідає за підключення до БД
+
 def close_db(error):
  db = g.pop('db', None)
  if db is not None:
