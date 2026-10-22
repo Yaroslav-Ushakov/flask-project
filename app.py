@@ -3,6 +3,9 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, g,
 session
 app = Flask(__name__)
+
+#Секретний ключ для захисту даних
+
 app.secret_key = 'super-secret-key-for-pet-project'
 app.config['DATABASE'] = 'app.db'
 
