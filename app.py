@@ -5,15 +5,18 @@ session
 app = Flask(__name__)
 app.secret_key = 'super-secret-key-for-pet-project'
 app.config['DATABASE'] = 'app.db'
+
+#Функція відповідає за підключення до БД
+
 def get_db():
  if 'db' not in g:
  g.db = sqlite3.connect(app.config['DATABASE'])
  g.db.row_factory = sqlite3.Row
  return g.db
+
+#Функція відповідає за закриття підключення до БД
+
 @app.teardown_appcontext
-
-#Функція відповідає за підключення до БД
-
 def close_db(error):
  db = g.pop('db', None)
  if db is not None:
